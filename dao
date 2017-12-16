@@ -14,9 +14,7 @@ import javax.sql.DataSource;
 import jp.hoyo.javaweb.chapter17.bean.ItemBean;
 
 public class ItemDAO {
-	private static final String SELECT = "SELECT * FROM item";
-    private static final String CONDITIONAL_SELECT 
-                       = "SELECT * FROM item WHERE price > ?";
+    private final String SELECT = "SELECT * FROM item";
 
     private DataSource source;
 
@@ -36,7 +34,9 @@ public class ItemDAO {
             ResultSet result = statement.executeQuery();
 
             while (result.next()) {
-                ItemBean item = new ItemBean();               
+                ItemBean item = new ItemBean(); 
+		item.setId(result.getString("id"));
+		item.setName(result.getString("name"));
                 item.setPrice(result.getInt("price"));
                 itemList.add(item);
             }
