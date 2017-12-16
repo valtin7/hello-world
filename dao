@@ -1,0 +1,56 @@
+package jp.hoyo.javaweb.chapter17.dao;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
+import javax.sql.DataSource;
+
+import jp.hoyo.javaweb.chapter17.bean.ItemBean;
+
+public class ItemDAO {
+	private static final String SELECT = "SELECT * FROM item";
+    private static final String CONDITIONAL_SELECT 
+                       = "SELECT * FROM item WHERE price > ?";
+
+    private DataSource source;
+
+    public ItemDAO() throws NamingException {
+        InitialContext context = new InitialContext();
+        source = (DataSource) context.lookup("java:comp/env/jdbc/datasource");
+    }
+
+    //一覧取得
+    public List<ItemBean> getItemListAll() throws SQLException {
+
+        List<ItemBean> itemList = new ArrayList<ItemBean> ();
+        Connection connection = source.getConnection();
+
+        try {
+            PreparedStatement statement = connection.prepareStatement(SELECT);
+            ResultSet result = statement.executeQuery();
+
+            while (result.next()) {
+                ItemBean item = new ItemBean();               
+                item.setPrice(result.getInt("price"));
+                itemList.add(item);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {	
+            if (connection != null) {
+                connection.close();
+            }
+        }
+        return itemList;
+    }
+
+    
+
+}
