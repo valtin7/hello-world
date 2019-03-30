@@ -1,3 +1,4 @@
-# hello-world
-just started using GitHub.
-leaning how to use this.
+# java-servlet-mysql
+
+## use mysql database
+setting to use mysql for servlet app
