@@ -1,3 +1,10 @@
+<!-- version5 -->
 <Context docBase="orderSystem" path="/orderSystem" reloadable="true" source="org.eclipse.jst.jee.server:orderSystem">
     <Resource auth="Container" driverClassName="org.mariadb.jdbc.Driver" name="jdbc/datasource" password="yourpassword" type="javax.sql.DataSource" url="jdbc:mariadb://localhost/database_name" username="dbusername"/>
 </Context>
+
+<!-- version8 -->
+<Context docBase="orderSystem" path="/orderSystem" reloadable="true" source="org.eclipse.jst.jee.server:orderSystem">
+    <Resource auth="Container" driverClassName="com.mysql.cj.jdbc.Driver" name="jdbc/datasource" password="yourpassword" type="javax.sql.DataSource" url="jdbc:mysql://localhost:3306/database_name" username="dbusername"/>
+</Context>
+
