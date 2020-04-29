@@ -1,10 +1,17 @@
-<!-- version5 -->
+<!-- version5 MySQL-->
 <Context docBase="orderSystem" path="/orderSystem" reloadable="true" source="org.eclipse.jst.jee.server:orderSystem">
     <Resource auth="Container" driverClassName="org.mariadb.jdbc.Driver" name="jdbc/datasource" password="yourpassword" type="javax.sql.DataSource" url="jdbc:mariadb://localhost/database_name" username="dbusername"/>
 </Context>
 
-<!-- version8 -->
+<!-- version8 MySQL-->
 <Context docBase="orderSystem" path="/orderSystem" reloadable="true" source="org.eclipse.jst.jee.server:orderSystem">
     <Resource auth="Container" driverClassName="com.mysql.cj.jdbc.Driver" name="jdbc/datasource" password="yourpassword" type="javax.sql.DataSource" url="jdbc:mysql://localhost:3306/database_name" username="dbusername"/>
 </Context>
+
+
+<!-- for h2 database -->
+<Context docBase="orderSystem" path="/orderSystem" reloadable="true" source="org.eclipse.jst.jee.server:orderSystem">
+<Resource auth="Container" driverClassName="org.h2.Driver" name="jdbc/datasource" password="password" type="javax.sql.DataSource" url="jdbc:h2:~/dbname" username="username"/>
+</Context>
+h2データベース用のjarはTomcatのlibフォルダに配置する
 
